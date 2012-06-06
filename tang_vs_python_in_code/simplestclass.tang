@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+# Filename: simplestclass.py
+
+class Person:
+	pass # An empty block
+
+p=Person()
+print p
+
+----tang----
+Person: nil
+
+p: Person() # 不会“用函数返回值赋值”混淆，因为函数不能以大写字母开头
+            # 以大写字母开头的都是常量，<类名>也是常量的一种。
+print p
+
