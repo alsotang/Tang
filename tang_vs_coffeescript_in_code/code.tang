@@ -1,0 +1,127 @@
+square(x):
+  x * x
+
+sum(x, y):
+  x + y
+
+even(x):
+  x % 2 == 0
+
+run_loop():
+  fire_events( (e): e.stopPropagation )
+  listen()
+  wait()
+
+dense_object_literal:
+  one: 1
+  two: 2
+  three: 3
+
+or 
+
+dense_object_literal: {one:1, two:2, three:3}
+
+spaced_out_multiline_object:
+  pi: 3.14159
+  list: [1, 2, 3, 4]
+  regex: /match[ing](every|thing|\/)/gi
+  three: Idea()
+
+  inner_obj:
+    freedom(): _.freedom()
+
+stooges: [{moe: 45}, {curly: 43}, {larry: 46}]
+
+exponents: [((x): x), ((x): x * x), ((x): x * x * x)]
+
+empty: []
+
+multiline: [
+    'line one',
+    'line two',
+  ]
+
+if submarine.shields_up
+  full_speed_ahead()
+  fire_torpedos()
+elif submarine.sinking
+  abandon_ship()
+else
+  run_away()
+
+eldest: if 25 > 21 then liz else marge
+
+decoration: medal_of_honor if war_hero
+
+race():
+  run()
+  walk()
+  crawl()
+  if tired
+    return sleep()
+  race
+
+good or= evil
+wine and= cheese
+
+((moon.turn(360))).shapes[3].move({x: 45, y: 30}).position['top'].offset('x')
+
+a = b = c = 5
+
+callback(
+    j'function(e) { e.stop(); }'
+  )
+
+# Try/Catch/Finally/Throw.
+try
+  all_hell_breaks_loose()
+  dogs_and_cats_living_together()
+  throw "up"
+catch error as e
+  print error
+  print e
+finally
+  clean_up()
+
+# While loops, break and continue.
+while demand > supply
+  sell()
+  restock()
+
+activity: swtich day
+            when 'Tuesday' then eat_breakfast()
+            when 'Sunday'
+              go_to_church()
+          else go_to_work()
+
+wednesday(): eat_breakfast(); go_to_work(); eat_dinner()
+
+story: "...
+        ...
+        ...
+       "
+
+Animal():
+  (@name):
+  
+  move(meters):
+    alert this.name + " moved " + meters + "m."
+
+Snake(Animal):
+  move():
+    alert 'Slithering...'
+    super 5
+
+Horse(Animal):
+  move():
+    alert 'Galloping'
+    super 45
+
+sam: Snake("Sammy the Snake")
+tom: Horse "Tommy the Horse"
+
+sam.move()
+tom.move()
+
+del secret.identity
+

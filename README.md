@@ -21,3 +21,14 @@
 1. 部分逻辑以可视化的形式呈现，可不是顺序的逻辑。如：一些if表达式的赋值
 1. 减少各类符号和关键字的使用，以可视化的方法让程序员判断代码的运作机制
 
+##安装与执行方法
+
+1. 安装node.js最新版
+2. 使用npm安装coffee-script: npm install -g coffee-script
+3. 将文件tang复制到系统环境的可执行目录中，如：
+    `sudo cp tang /usr/local/bin`
+
+4. 然后像所有动态语言一样，通过：
+    `$ tang Your_File_name`
+
+即可执行

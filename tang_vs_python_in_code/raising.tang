@@ -24,7 +24,7 @@ else:
 ----tang----
 
 ShortInputException(Exception): 
-  new: (@length, @atleast) ->
+  new: (@length, @atleast):
          super()
 
 try

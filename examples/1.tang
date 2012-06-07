@@ -1,0 +1,5 @@
+square<x>: x * x
+
+exponents: [(<x>: x), (<x>: x * x), (<x>: x * x * x)]
+
+print func(5) for func in exponents

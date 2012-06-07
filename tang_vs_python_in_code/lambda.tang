@@ -12,8 +12,8 @@ print twice(5)
 
 ----tang----
 
-make_repeater: (n) ->
-                (s) -> s * n
+make_repeater: (n): 
+                 (s): s * n
 twice: make_repeater(2)
 
 print twice('word')

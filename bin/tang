@@ -1,0 +1,93 @@
+#! /usr/bin/env ruby
+# coding=utf-8
+
+def parseFuncDefine(results)
+    _results = []
+    results.each_with_index do |line, line_num|
+      ori_line = line.dup
+      #line.gsub! /[^()]+:/, ''
+      if line.scan(/(
+                    ([^\s]*?) # 函数名
+                    (<.*?>) # 函数的参数
+                    :
+                    )
+                   /x
+                  ) do |mat|
+                      whole = $1
+                      func_name = $2
+                      args_list = $3
+                      if func_name =~ /^[A-Z]/ #如果是个类定义
+                        ori_line = "class #{func_name}"
+                        if args_list =~ /<(\w+)>/ #有继承
+                          parent = $1
+                          ori_line += " extends #{parent}"
+                        end
+                        ori_line += "\n"
+                      else # 是个函数
+                        if not func_name =~ /[A-Za-z0-9]$/ # 判断是否匿名函数，true则是
+                            args_list =~ /<([^(]*)>/
+                            args_list = "(#{$1})"
+                            ori_line.sub!(whole, "#{func_name}#{args_list} ->")
+                        else # 有名函数
+                          args_list = "(#{args_list[1...-1]})"
+                          ori_line.sub!(whole, "#{func_name} = #{args_list} ->")
+                        end
+                      end
+                    end
+        _results.push ori_line
+      end
+
+    end
+    return _results
+
+end
+
+def parseInnerClass(results)
+
+
+end
+
+def parseVarDefine(results)
+  _results = []
+  results.each do |line|
+    ori_line = line.dup
+    if line.sub! /({.*?})/, ''
+      dic = $1
+    end
+    #puts "Hash    :    " + (if dic.nil? then '' else dic end)
+    
+    line.gsub! /:/, '='
+    line.insert -2, (if dic.nil? then '' else dic end)
+
+    _results.push line
+  end
+
+  return _results
+end
+
+def main(filename='tang.tang')
+  new_filename = ''
+
+  File.open(filename, 'r') do |rf|
+    new_filename = filename.split('.')[0] + '.coffee' 
+    File.open(new_filename, 'w') do |wf|
+      #添加一些自定义函数
+      wf.puts <<HERE
+print = console.log
+HERE
+      results = rf.readlines
+      # 判断是否是函数或类
+      results = parseFuncDefine(results)
+      results = parseVarDefine(results)
+
+
+
+      wf.puts( results.join )
+    end
+  end
+  `coffee -c #{new_filename}`
+  js_filename = new_filename.split('.')[0] + '.js'
+  puts `node #{js_filename}`
+end
+
+main(ARGV[0])
