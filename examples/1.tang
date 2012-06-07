@@ -1,8 +1,9 @@
 square<x>: x * x
+print "square:"
+print square(5)
 
 exponents: [(<x>: x), (<x>: x * x), (<x>: x * x * x)]
-
-print "square:"
+print "遍历调用三个匿名函数:"
 print func(5) for func in exponents
 ##result: 5    25    125
 

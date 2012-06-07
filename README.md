@@ -23,8 +23,8 @@
 
 ##安装与执行方法
 
-1. 安装node.js最新版
-2. 使用npm安装coffee-script: npm install -g coffee-script
+1. 安装node.js最新版和ruby1.9.x（本人用的是1.9.3）。
+2. 使用nodejs的包管理系统npm安装coffee-script: npm install -g coffee-script
 3. 将文件tang复制到系统环境的可执行目录中，如：
     `sudo cp tang /usr/local/bin`
 
